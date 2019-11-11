@@ -29,6 +29,7 @@ const err = (error) => {
       if (token) {
         store.dispatch('Logout').then(() => {
           setTimeout(() => {
+            // 当前页面刷新；
             window.location.reload()
           }, 1500)
         })
@@ -40,6 +41,7 @@ const err = (error) => {
 
 // request interceptor
 service.interceptors.request.use(config => {
+  console.log(process.env.VUE_APP_API_BASE_URL)
   const token = Vue.ls.get(ACCESS_TOKEN)
   if (token) {
     config.headers['Access-Token'] = token // 让每个请求携带自定义 token 请根据实际情况自行修改
