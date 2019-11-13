@@ -16,6 +16,7 @@
     "ant-design-vue": "1.4.0-beta.0",
     "axios": "^0.19.0",
     "core-js": "2.6.9",
+    "crypto-js": "^3.1.9-1",
     "enquire.js": "^2.1.6",
     "lodash.get": "^4.4.2",
     "lodash.pick": "^4.4.0",

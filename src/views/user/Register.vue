@@ -100,7 +100,8 @@
 
 <script>
 import { mixinDevice } from '@/utils/mixin.js'
-import { getSmsCaptcha } from '@/api/login'
+import { getSmsCaptcha ,toRegist} from '@/api/login'
+import secret from '@/utils/secript.js'
 
 const levelNames = {
   0: '低',
@@ -215,7 +216,18 @@ export default {
       validateFields({ force: true }, (err, values) => {
         if (!err) {
           state.passwordLevelChecked = false
-          $router.push({ name: 'registerResult', params: { ...values } })
+          const registParams={...values}
+          registParams.password=secret.encrypt(values.password)
+          delete registParams.password2;
+          console.log(registParams);
+          toRegist(registParams)
+            .then((res) =>{
+              console.log(res);
+             //$router.push({ name: 'registerResult', params: { ...values } })
+            })
+            .catch(err => this.requestFailed(err))
+
+
         }
       })
     },

@@ -27,6 +27,16 @@ export function getSmsCaptcha (parameter) {
     data: parameter
   })
 }
+export function toRegist (parameter) {
+  return axios({
+    url: '/users/register',
+    method: 'post',
+    data:parameter,
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  })
+}
 
 export function getInfo () {
   return axios({
